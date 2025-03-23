@@ -1,14 +1,14 @@
-# NAME
+# Name
 
 Scene Graph Scenario
 
-# USAGE
+# UsagE
 
 
 
-# DESIGN
+# DesigN
 
-# POLICY
+# Policy
 
 Pose to Pose の冪等性を設計方針に置きます。
 
@@ -17,7 +17,7 @@ Pose to Pose の冪等性を設計方針に置きます。
 - 途中再開しやすさ
 - インホートしやすさ
 
-# KEY STRUCTURE OF CODE
+# Core Components
 
 - Character
 - Camera
