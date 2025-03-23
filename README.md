@@ -2,11 +2,11 @@
 
 Scene Graph Scenario
 
-# UsagE
+# Usage
 
 
 
-# DesigN
+# Design
 
 # Policy
 
