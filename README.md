@@ -25,6 +25,8 @@ Transition(fadeout-fadein);
 
     shiori.position = [1, 0, 0];
     character("haduki").position = [0, 1, 0];
+
+    shiori.motion = 
 }
 
 
@@ -59,3 +61,7 @@ Pose to Pose の冪等性を設計方針に置きます。
 - Visual Effect
 - Sound Effect
 - Background Music
+
+# Plan
+
+add Symbol that users defined
