@@ -1,0 +1,46 @@
+// Scene Graph Scenario DSL の簡略化された Lark 文法
+
+start: line*
+
+line: block_start
+    | block_end
+    | comment
+    | transition
+    | declaration
+    | assignment
+    | function_call ";"
+    | method_call ";"
+
+block_start: "{"
+block_end: "}"
+
+comment: /---[^\n]*/
+
+transition: "Transition" "(" transition_type ")" ";"
+transition_type: "fadeout-fadein" | /[a-zA-Z][a-zA-Z0-9_\-]*/
+
+declaration: ("local" | "let") IDENTIFIER "=" (value | method_call) ";"
+
+assignment: (IDENTIFIER | function_call) "." IDENTIFIER "=" value ";"
+
+function_call: IDENTIFIER "(" [arguments] ")"
+method_call: IDENTIFIER "." IDENTIFIER "(" [arguments] ")"
+
+arguments: value ("," value)*
+         | IDENTIFIER ":" value ("," IDENTIFIER ":" value)*
+         | value ("," value)* "," IDENTIFIER ":" value ("," IDENTIFIER ":" value)*
+
+value: STRING
+     | NUMBER
+     | array
+     | function_call
+     | IDENTIFIER
+
+array: "[" [value ("," value)*] "]"
+
+STRING: /"[^"]*"/
+NUMBER: /\d+(\.\d+)?/
+IDENTIFIER: /[a-zA-Z][a-zA-Z0-9_]*/
+
+%import common.WS
+%ignore WS

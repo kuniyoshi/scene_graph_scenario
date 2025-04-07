@@ -1,0 +1,75 @@
+# Scene Graph Scenario DSL の BNF
+
+<program> ::= <statement>*
+
+<statement> ::= <block> 
+              | <transition> 
+              | <local-declaration> 
+              | <expression> ";"
+              | <comment>
+
+<block> ::= "{" <statement>* "}"
+
+<comment> ::= "---" <any-text>
+
+<transition> ::= "Transition" "(" <transition-type> ")" ";"
+
+<transition-type> ::= "fadeout-fadein" | <identifier>
+
+<local-declaration> ::= "local" <identifier> "=" <expression>
+
+<expression> ::= <function-call>
+               | <variable-declaration>
+               | <property-assignment>
+               | <method-call>
+               | <identifier>
+
+<variable-declaration> ::= "let" <identifier> "=" <expression>
+
+<function-call> ::= <identifier> "(" <argument-list> ")"
+
+<method-call> ::= <identifier> "." <identifier> "(" <argument-list> ")"
+
+<property-assignment> ::= <identifier> "." <identifier> "=" <value>
+
+<argument-list> ::= <empty>
+                  | <positional-arguments>
+                  | <named-arguments>
+                  | <positional-arguments> "," <named-arguments>
+
+<positional-arguments> ::= <expression>
+                         | <expression> "," <positional-arguments>
+
+<named-arguments> ::= <identifier> ":" <expression>
+                    | <identifier> ":" <expression> "," <named-arguments>
+
+<value> ::= <string>
+          | <number>
+          | <array>
+          | <function-call>
+          | <identifier>
+
+<array> ::= "[" <array-elements> "]"
+
+<array-elements> ::= <empty>
+                   | <expression>
+                   | <expression> "," <array-elements>
+
+<string> ::= "\"" <any-text> "\""
+
+<number> ::= <digit>+
+           | <digit>+ "." <digit>+
+
+<identifier> ::= <letter> (<letter> | <digit> | "_")*
+
+<letter> ::= "A" | "B" | ... | "Z" | "a" | "b" | ... | "z"
+
+<digit> ::= "0" | "1" | ... | "9"
+
+<empty> ::= ""
+
+<any-text> ::= <any-character>*
+
+<any-character> ::= <letter> | <digit> | <special-character>
+
+<special-character> ::= " " | "!" | "#" | "$" | "%" | "&" | "'" | "(" | ")" | "*" | "+" | "," | "-" | "." | "/" | ":" | ";" | "<" | "=" | ">" | "?" | "@" | "[" | "\\" | "]" | "^" | "_" | "`" | "{" | "|" | "}" | "~"
