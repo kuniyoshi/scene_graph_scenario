@@ -50,6 +50,8 @@ Scenario Script is a DSL.
 
 # Design
 
+DSL is easy to write, but outputs of script is powerful.
+
 # Policy
 
 Pose to Pose の冪等性を設計方針に置きます。
