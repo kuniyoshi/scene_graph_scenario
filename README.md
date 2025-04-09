@@ -1,24 +1,25 @@
-# Name
+# Scene Graph Scenario
 
-Scene Graph Scenario
+A library for creating and managing scenario scripts through a domain-specific language (DSL).
 
-# Usage
+## Usage Example
 
---- Root blocks makes a cut cluster
+```
+--- Root blocks create a cut cluster
 {
-    --- three hypens means a comment line
+    --- Three hyphens indicate a comment line
     Text(
-        Statement("2023年10月某日……\n\n新たに《子やぎドレス》が発見された。")
+        Statement("October 2023...\n\nA new 'Kid Goat Dress' has been discovered.")
     );
 }
 
 Transition(fadeout-fadein);
 
 {
-    --- access the character by `shiori` symbol
+    --- Access the character using the `shiori` symbol
     let shiori = Character("shiori");
 
-    --- access the character by character("haduki")
+    --- Access the character using character("haduki")
     Character("haduki");
 
     Model("Table", position: [0, 0, 0]);
@@ -30,38 +31,37 @@ Transition(fadeout-fadein);
     character("haduki").playMotion("walk", loop: true);
 }
 
-Trasition()
+Transition()
 
 {
-    Text("ねぇ");
+    Text("Hey");
 }
+```
 
-# Description
+## Description
 
-This library is for Scenario Script.
+This library provides a framework for Scenario Scripts, which is a domain-specific language (DSL) designed to simplify the creation of interactive scenarios and cutscenes.
 
-Scenario Script is a DSL.
+## Workflow
 
-# Flow
+1. Parse DSL to Abstract Syntax Tree (AST)
+2. Convert AST to a programming language script
+3. Run the script in a game engine
 
-1. Parse DSL to AST
-1. Convert AST to some programming language script
-1. Run the script in some GameEngine
+## Design Philosophy
 
-# Design
+The DSL is designed to be easy to write while producing powerful script outputs that can be used in game engines.
 
-DSL is easy to write, but outputs of script is powerful.
+## Policy
 
-# Policy
+Our design is based on the idempotence of "Pose to Pose" animation principles, focusing on:
 
-Pose to Pose の冪等性を設計方針に置きます。
+- Ease of understanding
+- Debuggability
+- Easy resumption from any point
+- Importability
 
-- 理解しやすさ
-- デバグしやすさ
-- 途中再開しやすさ
-- インホートしやすさ
-
-# Core Components
+## Core Components
 
 - Vector3
 - Position
@@ -75,6 +75,6 @@ Pose to Pose の冪等性を設計方針に置きます。
 - Sound Effect
 - Background Music
 
-# Plan
+## Future Plans
 
-add Symbol that users defined
+- Add user-defined symbols
