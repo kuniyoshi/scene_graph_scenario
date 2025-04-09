@@ -26,16 +26,27 @@ Transition(fadeout-fadein);
     shiori.position = [1, 0, 0];
     character("haduki").position = [0, 1, 0];
 
-    shiori.motion = 
+    shiori.playMotion("walk", loop: true);
+    character("haduki").playMotion("walk", loop: true);
 }
 
+Trasition()
 
-local scene = Scene("event")
-local tsubame = scene.add("Character", "Tsubame")
-local cut = Cut("1")
-cut.add(tsubame)
-scene.add(cut)
-scene.play()
+{
+    Text("ねぇ");
+}
+
+# Description
+
+This library is for Scenario Script.
+
+Scenario Script is a DSL.
+
+# Flow
+
+1. Parse DSL to AST
+1. Convert AST to some programming language script
+1. Run the script in some GameEngine
 
 # Design
 
