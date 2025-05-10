@@ -52,6 +52,9 @@ This library provides a framework for Scenario Scripts, which is a domain-specif
 
 The DSL is designed to be easy to write while producing powerful script outputs that can be used in game engines.
 
+Transpilation is not merely a translation of the DSL. It does many things that are not written in the DSL.
+DSL は多くを暗黙的にすることで書きやすさを実現していすためです。
+
 ## Policy
 
 Our design is based on the idempotence of "Pose to Pose" animation principles, focusing on:
